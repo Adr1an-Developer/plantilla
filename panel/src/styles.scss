@@ -1,0 +1,14 @@
+@import "./app/core/styles/index";
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+.content-area {
+  height: 100%;
+}
+::ng-deep .mat-form-field-infix {
+  width: auto !important;
+}

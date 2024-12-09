@@ -1,0 +1,15 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--height-footer);
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  p {
+    padding: 2px;
+    margin: 4px auto;
+    box-sizing: border-box;
+  }
+}

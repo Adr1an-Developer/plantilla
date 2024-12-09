@@ -1,0 +1,12 @@
+ [
+  {
+    "id": "00000000-0000-1234-5678-000000000001",
+    "username": "Admin",
+    "password": "QWRyMWFuOTc4Kio=",
+    "ProfileId": "00000000-9999-1234-5678-100000000001",
+    "firstname": "Adrian J.",
+    "lastname": "Gonzalez A.",
+    "email": "admin@soft-geek.com",
+    "CreateByUser": "00000000-0000-1234-5678-000000000001"
+  }
+]

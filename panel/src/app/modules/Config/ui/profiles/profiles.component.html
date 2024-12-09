@@ -1,0 +1,62 @@
+<div class="Table-container">
+  <app-filter
+    [activatedRoute]="this._activatedRoute"
+    [showNew]="true"
+    [showAdvancedFilters]="false"
+    (filter)="applyFilter($event)"
+  ></app-filter>
+  <mat-table [dataSource]="dataSource" matSort class="vertical-fit">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="abbreviation">
+      <mat-header-cell *matHeaderCellDef> Abreviación </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.abbreviation }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.isActive == 1 ? 'green' : 'red' }"
+      >
+        {{ element.isActive ? "ACTIVO" : "INACTIVO" }}
+      </mat-cell>
+    </ng-container>
+    <!-- Columna del Menú -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu
+          #menu="matMenu"
+          [overlapTrigger]="false"
+          xPosition="before"
+          yPosition="above"
+        >
+          <button mat-menu-item (click)="onDetailNavigate(element.id)">
+            <mat-icon> visibility </mat-icon>
+            <span> Detalles </span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSizeOptions]="globalService.registerByPages()"
+    [pageSize]="globalService.defaultPagesSelected"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

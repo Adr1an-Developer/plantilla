@@ -1,0 +1,72 @@
+# Build results
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio specific
+.vs/
+.vscode/
+*.v12.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core
+#appsettings.Development.json
+
+# Windows specific
+*.pdb
+*.opc
+
+# Resharper
+_ReSharper*/
+*.*.DotSettings.user
+
+# Files built by Visual Studio
+*.dbmdl
+*.lcodeproj
+*.log
+
+# Backup & Report files
+*.mdf
+*.ldf
+*.ndf
+*.csv
+*.trx
+*.coverage
+*.xap
+*.byz
+
+# Package directories
+## NB: It’s not recommended to ignore NuGet Packages in Web/MVC/API projects
+## as they are included in the project folder and required for restore.
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# Azure Web App data
+azds/
+
+# IIS
+IISExpress/
+
+# Logs
+*.log
+logs/
+
+# NCrunch
+*.ncrunch*
+.ncrunchsolution.vs*
+
+# StyleCop
+.StyleCop/
+
+# Others
+*_upgrade.log
+*.DataStoreTest.*
+backup/
+_repos/
+
+# Custom rules
+# Add custom rules as necessary

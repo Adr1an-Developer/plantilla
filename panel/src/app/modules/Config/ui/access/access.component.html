@@ -1,0 +1,129 @@
+<div class="Table-container">
+  <app-filter
+    [activatedRoute]="this._activatedRoute"
+    [showNew]="true"
+    [showAdvancedFilters]="false"
+    (filter)="applyFilter($event)"
+  ></app-filter>
+  <mat-table [dataSource]="dataSource" matSort class="vertical-fit">
+    <ng-container matColumnDef="profileName">
+      <mat-header-cell *matHeaderCellDef> Profile </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.profileName }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="menuName">
+      <mat-header-cell *matHeaderCellDef> Menu </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.menuName }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="canView">
+      <mat-header-cell *matHeaderCellDef> Ver </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canView == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canView == 1">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="element.canView == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="canAdd">
+      <mat-header-cell *matHeaderCellDef> Añadir </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canAdd == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canAdd == 1">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="element.canAdd == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="canEdit">
+      <mat-header-cell *matHeaderCellDef> Modificar </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canEdit == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canEdit == 1">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="element.canEdit == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="canDelete">
+      <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canDelete == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canDelete == 1">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="element.canDelete == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="canExport">
+      <mat-header-cell *matHeaderCellDef> Exportar </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canExport == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canExport == 1">check_circle_outline</mat-icon>
+        <mat-icon *ngIf="element.canExport == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="canAuthorize">
+      <mat-header-cell *matHeaderCellDef> Autoriza </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.canAuthorize == 1 ? 'green' : 'red' }"
+      >
+        <mat-icon *ngIf="element.canAuthorize == 1"
+          >check_circle_outline</mat-icon
+        >
+        <mat-icon *ngIf="element.canAuthorize == 0">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.isActive == 1 ? 'green' : 'red' }"
+      >
+        {{ element.isActive ? "ACTIVO" : "INACTIVO" }}
+      </mat-cell>
+    </ng-container>
+    <!-- Columna del Menú -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu
+          #menu="matMenu"
+          [overlapTrigger]="false"
+          xPosition="before"
+          yPosition="above"
+        >
+          <button mat-menu-item (click)="onDetailNavigate(element.id)">
+            <mat-icon> visibility </mat-icon>
+            <span> Detalles </span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSizeOptions]="globalService.registerByPages()"
+    [pageSize]="globalService.defaultPagesSelected"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

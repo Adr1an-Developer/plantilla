@@ -1,0 +1,56 @@
+<div class="background-image">
+  <header class="header">
+    <!-- <img
+      alt="Logo"
+      class="logo"
+      src="../../../../../public/assets/image/logo.png"
+    /> -->
+    <div class="logo"></div>
+    <div class="light-dark">
+      <button mat-mini-fab (click)="toggleTheme()">
+        <mat-icon>{{
+          isDarkThemeActivate ? "light_mode" : "dark_mode"
+        }}</mat-icon>
+      </button>
+    </div>
+  </header>
+
+  <div class="login-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><mat-label>Iniciar Sesión</mat-label></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="email" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              type="password"
+              formControlName="password"
+              required
+            />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Entrar
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <footer class="footer">
+    <p>© 2024 Tu Compañía. Todos los derechos reservados.</p>
+  </footer>
+</div>

@@ -1,0 +1,60 @@
+.background-image {
+  background-image: url("../../../../../public/assets/image/background.webp");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  display: flex; /* Usa flexbox para el diseño */
+  justify-content: space-between; /* Distribuye los elementos al inicio y fin */
+  align-items: center; /* Alinea verticalmente los elementos al centro */
+  padding: 10px 20px; /* Añade un poco de espacio alrededor */
+  height: 80px;
+  position: relative;
+  .logo {
+    width: 100px;
+    height: 100px;
+    background-image: url("../../../../../public/assets/image/logo.png");
+    background-size: cover;
+    background-position: center;
+  }
+  .light-dark {
+    display: flex; /* Usa flexbox para el diseño del contenedor del botón */
+    align-items: center; /* Centra verticalmente el botón */
+  }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  width: 400px;
+  padding: 1rem;
+  // background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  mat-card-header {
+    display: flex;
+    padding: 16px 16px;
+    align-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}

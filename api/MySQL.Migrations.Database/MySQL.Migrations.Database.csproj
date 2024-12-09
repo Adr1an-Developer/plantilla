@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<LangVersion>7.2</LangVersion>
+		<AssemblyVersion>2.3.15.0</AssemblyVersion>
+		<FileVersion>2.3.15.0</FileVersion>
+		<Version>2.3.15</Version>
+		<Company>Adrian Gonzalez</Company>
+		<Product>MySQL.Migrations</Product>
+		<Authors>AdrianDev</Authors>
+		<Description>Dll with database migrations</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentMigrator" Version="5.2.0" />
+		<PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3">
+		  <GeneratePathProperty>True</GeneratePathProperty>
+		</PackageReference>
+	</ItemGroup>
+
+	<!--"Remove" all .sql files-->
+	<ItemGroup>
+		<None Remove="Scripts\*\*.sql" />
+	</ItemGroup>
+
+	<!--Add all .sql files as embedded-->
+	<ItemGroup>
+		<EmbeddedResource Include="Scripts\*\*.sql" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="FirstLoad\languages.json" />
+	  <None Remove="FirstLoad\userdetails.json" />
+	  <None Remove="FirstLoad\users.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="FirstLoad\languages.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="FirstLoad\userdetails.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="FirstLoad\users.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\ProjectLottery.V1.Helpers\ProjectLottery.V1.Helpers.csproj" />
+	  <ProjectReference Include="..\ProjectLottery.V1.Entities\ProjectLottery.V1.Entities.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="Newtonsoft.Json">
+	    <HintPath>..\DLLs\Newtonsoft.Json.dll</HintPath>
+	    <Private>True</Private>
+	    <EmbedInteropTypes>False</EmbedInteropTypes>
+	  </Reference>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,69 @@
+<mat-card appearance="outlined" class="card-detail">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button *ngIf="!isNew" (click)="confirmDelete()">Borrar</button>
+    <button mat-button [disabled]="isFormInvalid()" (click)="onSave()">
+      Guardar
+    </button>
+  </mat-card-actions>
+  <mat-card-content class="mat-card-content">
+    <form [formGroup]="ppalForm">
+      <div class="input-responsive">
+        <app-select-filter
+          label="Perfil"
+          [data]="allProfileData"
+          (ItemSelected)="onProfileSelected($event)"
+          [setValue]="profileSelected"
+        ></app-select-filter>
+      </div>
+      <div class="input-responsive">
+        <app-select-filter
+          label="Menu"
+          [data]="allMenuParentData"
+          (ItemSelected)="onMenuSelected($event)"
+          [setValue]="menuParentSelected"
+        ></app-select-filter>
+      </div>
+      <div class="input-responsive form-"></div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canView">
+          Permiso para Ver
+        </mat-slide-toggle>
+      </div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canAdd">
+          Permiso para Añadir
+        </mat-slide-toggle>
+      </div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canEdit">
+          Permiso para Modificar
+        </mat-slide-toggle>
+      </div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canDelete">
+          Permiso para Borrar
+        </mat-slide-toggle>
+      </div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canExport">
+          Permiso para Exportar
+        </mat-slide-toggle>
+      </div>
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="canAuthorize">
+          Permiso para Autorizar
+        </mat-slide-toggle>
+      </div>
+
+      <div class="input-responsive form-">
+        <mat-slide-toggle formControlName="isActive" *ngIf="!isNew">
+          <span *ngIf="ppalForm.get('isActive')?.value == 1">Activo</span>
+          <span *ngIf="ppalForm.get('isActive')?.value == 0">Inactivo</span>
+        </mat-slide-toggle>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,80 @@
+<div class="content-card">
+  <div class="content-filter">
+    <mat-form-field color="primary" appearance="outline" class="mat-form-round">
+      <mat-label>Busqueda</mat-label>
+      <input
+        matInput
+        #input
+        (keyup)="onApplyFilter($event)"
+        [(ngModel)]="value"
+      />
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        *ngIf="value"
+        (click)="onClear()"
+      >
+        <mat-icon color="warn">clear</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="content-spacer"></div>
+  <div class="content-options" *ngIf="showNew || showAdvancedFilters">
+    <button
+      *ngIf="showNew"
+      mat-mini-fab
+      matTooltip="Agregar un nuevo registro"
+      matTooltipPosition="after"
+      (click)="this.onAddNavigate()"
+    >
+      <mat-icon> add </mat-icon>
+    </button>
+    <button
+      *ngIf="showAdvancedFilters"
+      mat-mini-fab
+      matTooltip="Activar/Desactivar filtros avanzados"
+      matTooltipPosition="after"
+      (click)="activateFilter = !activateFilter"
+    >
+      <mat-icon> settings </mat-icon>
+    </button>
+  </div>
+</div>
+<div class="filter-settings" *ngIf="activateFilter">
+  <mat-accordion class="headers-align">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          ><mat-icon>search</mat-icon> Filtros avanzados</mat-panel-title
+        >
+        <mat-panel-description>
+          <div class="content-options">
+            <button
+              type="button"
+              mat-mini-fab
+              class="u-margin-l-8"
+              (click)="$event.stopPropagation()"
+              matTooltip="Exportar a Excel"
+              matTooltipPosition="after"
+            >
+              <mat-icon>file_download</mat-icon>
+            </button>
+            <button
+              type="button"
+              mat-mini-fab
+              class="u-margin-l-8"
+              (click)="$event.stopPropagation()"
+              matTooltip="Limpiar todos los filtros avanzados"
+              matTooltipPosition="after"
+            >
+              <mat-icon>search_off</mat-icon>
+            </button>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- filstros -->
+      <ng-content></ng-content>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

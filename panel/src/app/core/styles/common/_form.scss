@@ -1,0 +1,42 @@
+.card-detail {
+  height: calc(100% - var(--height-footer));
+}
+
+.mat-card-content {
+  box-sizing: border-box;
+  padding: 16px !important;
+  position: relative;
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    .input-responsive {
+      box-sizing: border-box;
+      width: 33.3333%;
+      padding-bottom: 0.5rem;
+      padding-right: 0.5rem;
+
+      @media only screen and (max-width: 992px) {
+        width: 50%;
+      }
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      // @media only screen and (min-width: 993px) {
+      //   width: 33.33%;
+      // }
+      .mat-mdc-form-field {
+        width: 100%;
+      }
+    }
+
+    .form-status {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

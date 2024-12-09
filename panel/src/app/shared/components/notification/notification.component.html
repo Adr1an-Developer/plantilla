@@ -1,0 +1,11 @@
+<div
+  *ngFor="let notification of notifications; index as i"
+  class="toast toast-{{ notification.type }}"
+  [style.top.px]="i * 100"
+>
+  <h4 class="toast-heading-{{ notification.type }}">
+    {{ notification.title }}
+  </h4>
+  <p class="toast-text-{{ notification.type }}">{{ notification.message }}</p>
+  <a class="close-{{ notification.type }}" (click)="remove(i)">&times;</a>
+</div>

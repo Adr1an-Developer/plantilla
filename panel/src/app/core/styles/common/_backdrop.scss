@@ -1,0 +1,13 @@
+.backdrop {
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+}
+
+.dark-mode {
+  .backdrop {
+    background-color: var(--primary-color-dark);
+  }
+}

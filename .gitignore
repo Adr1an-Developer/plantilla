@@ -1,0 +1,12 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/api/*/bin
+/api/*/obj
+/.vs
+/api/DLLs
+/api/MySQL.Migrations.Database/Powershell/migration.sql
+/api/MySQL.Migrations.Database/Powershell/migration_down.sql
+/api/MySQL.Migrations.Database/Powershell/migration_up.sql
+/api/projectLotery.V1/FirstLoad

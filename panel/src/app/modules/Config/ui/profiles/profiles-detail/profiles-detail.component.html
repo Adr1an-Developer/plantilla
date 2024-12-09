@@ -1,0 +1,51 @@
+<mat-card appearance="outlined" class="card-detail">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-button *ngIf="!isNew" (click)="confirmDelete()">Borrar</button>
+    <button mat-button [disabled]="isFormInvalid()" (click)="onSave()">
+      Guardar
+    </button>
+  </mat-card-actions>
+  <mat-card-content class="mat-card-content">
+    <form [formGroup]="ppalForm">
+      <!-- <fieldset> -->
+      <div class="input-responsive">
+        <mat-form-field class="size-input" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input
+            matInput
+            placeholder="Nombre"
+            type="text"
+            formControlName="name"
+          />
+          <mat-error *ngIf="false" class="form-control-feedback">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-responsive">
+        <mat-form-field class="size-input" appearance="outline">
+          <mat-label>Abreviación</mat-label>
+          <input
+            matInput
+            placeholder="Abreviación"
+            type="text"
+            formControlName="abbreviation"
+          />
+          <mat-error *ngIf="false" class="form-control-feedback">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-responsive form-status">
+        <mat-slide-toggle formControlName="is_active" *ngIf="!isNew">
+          Activo
+        </mat-slide-toggle>
+      </div>
+      <!-- </fieldset> -->
+    </form>
+  </mat-card-content>
+</mat-card>

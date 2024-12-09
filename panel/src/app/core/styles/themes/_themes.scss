@@ -1,0 +1,242 @@
+@use "@angular/material" as mat;
+
+@include mat.all-component-typographies();
+@include mat.core();
+
+// Define a dark theme
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+    ),
+    typography: (
+      brand-family: "Comic Sans",
+      bold-weight: 900,
+    ),
+    density: (
+      scale: -1,
+    ),
+  )
+);
+
+// Define a light theme
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+    ),
+    typography: (
+      brand-family: "Comic Sans",
+      bold-weight: 900,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  --primary-color: #{mat.get-theme-color($light-theme, primary, 40)};
+  --secondary-color: #{mat.get-theme-color($light-theme, primary, 60)};
+  --text-color: #{mat.get-theme-color($light-theme, primary, 100)};
+  --primary-color-dark: #{mat.get-theme-color($dark-theme, primary, 20)};
+  --secondary-color-dark: #{mat.get-theme-color($dark-theme, primary, 60)};
+  --text-color-dark: #{mat.get-theme-color($dark-theme, primary, 90)};
+  --height-footer: 2rem;
+  --height-breadcrumb: 32px;
+}
+
+html {
+  @include mat.all-component-themes($light-theme);
+
+  --mat-toolbar-container-background-color: var(--primary-color);
+  --mat-toolbar-container-text-color: var(--text-color);
+  --mat-app-background-color: #c9c9c9 !important;
+
+  .footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  .mat-drawer-container {
+    background-color: transparent;
+  }
+  .mat-drawer-side {
+    border-color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+  .mat-mdc-nav-list .mat-mdc-list-item,
+  .mat-mdc-nav-list .mat-mdc-list-item {
+    background-color: var(--primary-color);
+    .mdc-list-item__primary-text {
+      color: var(--text-color);
+    }
+  }
+  .mat-mdc-nav-list .mat-mdc-list-item:focus,
+  .mat-mdc-nav-list .mat-mdc-list-item:hover {
+    background-color: var(--text-color);
+    .mdc-list-item__primary-text {
+      color: var(--primary-color);
+    }
+  }
+  .mdc-list-item__primary-text {
+    color: var(--primary-color);
+    mat-icon {
+      margin-right: 8px;
+    }
+    div {
+      .mat-mdc-form-field {
+        padding: 8px 0;
+        display: block;
+
+        input {
+          width: 100%;
+        }
+      }
+      .mat-mdc-focus-indicator:hover {
+        background-color: aqua;
+      }
+    }
+  }
+  .mat-expansion-panel {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+  .mat-expansion-indicator svg {
+    fill: var(--text-color);
+  }
+  .mat-expansion-panel-content {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+  /// Paginador ///
+  div.mat-mdc-select-panel {
+    background-color: var(--text-color);
+    span {
+      color: var(--primary-color);
+      width: inherit;
+    }
+  }
+
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+      .mat-mdc-option-multiple
+    ) {
+    background-color: var(--primary-color);
+    span {
+      color: var(--text-color);
+    }
+  }
+
+  mat-dialog-container {
+    .mat-mdc-dialog-surface {
+      border: var(--primary-color) 1px solid !important;
+    }
+  }
+
+  .contenedor-filter {
+    width: inherit;
+  }
+
+  .mat-mdc-option.mdc-list-item {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.781);
+    &:hover {
+      color: #7e7d7d;
+      font-weight: bold !important;
+    }
+  }
+}
+
+.dark-mode {
+  @include mat.all-component-colors($dark-theme);
+  --mat-toolbar-container-background-color: var(--primary-color-dark);
+  --mat-toolbar-container-text-color: var(--text-color-dark);
+  --mat-app-background-color: #424141 !important;
+
+  .footer {
+    background-color: var(--primary-color-dark);
+    color: var(--text-color-dark);
+  }
+  .mat-drawer-container {
+    background-color: transparent;
+  }
+  .mat-drawer-side {
+    border-color: var(--text-color-dark);
+    background-color: var(--primary-color-dark);
+  }
+
+  .mat-mdc-nav-list .mat-mdc-list-item,
+  .mat-mdc-nav-list .mat-mdc-list-item {
+    background-color: var(--primary-color-dark);
+    .mdc-list-item__primary-text {
+      color: var(--text-color-dark);
+    }
+  }
+  .mat-mdc-nav-list .mat-mdc-list-item:focus,
+  .mat-mdc-nav-list .mat-mdc-list-item:hover {
+    background-color: var(--text-color-dark);
+    .mdc-list-item__primary-text {
+      color: var(--primary-color-dark);
+    }
+  }
+
+  .mdc-list-item__primary-text {
+    color: var(--text-color);
+    mat-icon {
+      margin-right: 8px;
+    }
+    div {
+      .mat-mdc-form-field {
+        padding: 8px 0;
+        display: block;
+        input {
+          width: 100%;
+          color: var(--primary-color);
+          border: var(--primary-color);
+        }
+      }
+    }
+  }
+  .mat-expansion-panel {
+    color: var(--text-color-dark);
+    background-color: var(--primary-color-dark);
+  }
+  .mat-expansion-indicator svg {
+    fill: var(--text-color-dark);
+  }
+  .mat-expansion-panel-content {
+    color: var(--text-color-dark);
+    background-color: var(--primary-color-dark);
+  }
+  /// Paginador ///
+  div.mat-mdc-select-panel {
+    background-color: var(--mat-app-background-color);
+    span {
+      color: var(--primary-color-dark);
+    }
+  }
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+      .mat-mdc-option-multiple
+    ) {
+    background-color: var(--primary-color-dark);
+    span {
+      color: var(--text-color-dark);
+    }
+  }
+  mat-dialog-container {
+    .mat-mdc-dialog-surface {
+      border: var(--primary-color-dark) 1px solid !important;
+    }
+  }
+
+  .mat-mdc-option.mdc-list-item {
+    align-items: center;
+    background: rgba(170, 168, 168, 0.781);
+    &:hover {
+      color: #7e7d7d;
+      font-weight: bold !important;
+      background-color: #424141;
+    }
+  }
+}
